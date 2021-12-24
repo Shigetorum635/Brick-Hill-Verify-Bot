@@ -1,25 +1,26 @@
 {
-  "name": "brick-hill-verifier",
-  "version": "1.0.1",
-  "description": "A renewed version of the brick hill verifier bot for discord.",
-  "main": "dist/index.js",
-  "type": "module",
-  "scripts": {
-    "compile": "npx tsc",
-    "start": "node dist/index.js",
-    "test": "echo \"hello\""
-  },
-  "keywords": [
-    "discord",
-    "bot",
-    "discord",
-    "bot"
-  ],
-  "author": "Shiggy, Dragonian",
-  "license": "MIT",
-  "dependencies": {
-    "aws-sdk": "^2.1038.0",
-    "discord.js": "^13.3.1",
-    "phin": "^3.6.1"
-  }
+	"name": "brick-hill-verifier",
+	"version": "1.0.1",
+	"description": "A renewed version of the brick hill verifier bot for discord.",
+	"main": "dist/index.js",
+	"type": "module",
+	"scripts": {
+		"compile": "npx tsc",
+		"start": "node dist/index.js",
+		"test": "echo \"hello\""
+	},
+	"keywords": [
+		"discord",
+		"bot",
+		"discord",
+		"bot"
+	],
+	"author": "Shiggy, Dragonian",
+	"license": "MIT",
+	"dependencies": {
+		"aws-sdk": "^2.1038.0",
+		"discord.js": "^13.3.1",
+		"phin": "^3.6.1",
+		"prettier": "^2.5.1"
+	}
 }
