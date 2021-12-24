@@ -47,4 +47,5 @@ client.on('message', async (msg: Message): Promise<void> => {
 })
 export default {
   settings: clientSettings,
+  bot : client
 };

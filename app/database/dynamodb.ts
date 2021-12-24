@@ -10,7 +10,7 @@ AWS.config.update({
 
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const fetchUser: IDynamoInteraction = async (discordId) => {
+const fetchUser: IDynamoInteraction = async (discordId) : Promise<any> => {
   const params: IParams = {
     TableName: "verified",
     Key: {
@@ -18,7 +18,7 @@ const fetchUser: IDynamoInteraction = async (discordId) => {
     },
   };
 
-  let data = await documentClient.get(params).promise();
+  let data  = await documentClient.get(params).promise();
   return data.Item;
 };
 
