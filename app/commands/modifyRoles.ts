@@ -64,3 +64,5 @@ const add: IRoleInteraction = async (memberId, _, userId) => {
 
 	return guildMember.roles.add(roles, 'Added by Brick Hill Verifier.');
 };
+
+export default { add, remove, hasRole };
