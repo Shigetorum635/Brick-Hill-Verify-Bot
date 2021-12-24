@@ -7,9 +7,8 @@
 		"module": "es6",
 		"esModuleInterop": true,
 		"outDir": "dist",
-
+		"forceConsistentCasingInFileNames": true,
 		"moduleResolution": "node",
-		// TBD it is desired to enabled strict type checking at some point:
 		"strict": false,
 		"typeRoots": ["./types", "./node_modules/@types"]
 	}

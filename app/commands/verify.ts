@@ -1,7 +1,7 @@
 import { randomBytes } from 'crypto';
 import { Message, MessageEmbed } from 'discord.js';
-import * as client from '../index.js';
-import * as dynamo from '../database/dynamodb.js';
+import client from '../index.js';
+import dynamo from '../database/dynamodb.js';
 import { IUser } from '../../types/index.js';
 import api from './../api/brickHill';
 const VERIFICATION_TIMEOUTS_MINS: number = 2;
@@ -27,7 +27,7 @@ function isWeekOld(joinDate: Date | number): boolean {
 }
 
 async function startVerifyProcess(msg: Message, username: string) {
-	if (client.default.settings.usersVerifying[msg.author.id])
+	if (client.settings.usersVerifying[msg.author.id])
 		return msg.reply('You are currently verifying.');
 
 	const verifyData = dynamo.fetchUser(msg.author.id);
@@ -57,14 +57,14 @@ async function startVerifyProcess(msg: Message, username: string) {
 		description:
 			`Hello ${username}! :wave:\n` +
 			`Add the code below to your profile to verify, [blurb](https://brick-hill.com/settings)\n` +
-			`When you are finished, reply with \`${client.default.settings.prefix}done\` or \`${client.default.settings.prefix}cancel\`.`
+			`When you are finished, reply with \`${client.settings.prefix}done\` or \`${client.settings.prefix}cancel\`.`
 	}).setThumbnail(`https://brkcdn.com/images/avatars/${userData.img}.png`);
 	// @ts-expect-error
 	await msg.channel.send('', { embeds: embed });
 
 	let timer = setTimeout(() => {
-		if (client.default.settings.usersVerifying[msg.author.id])
-			delete client.default.settings.usersVerifying[msg.author.id];
+		if (client.settings.usersVerifying[msg.author.id])
+			delete client.settings.usersVerifying[msg.author.id];
 		msg.reply('You ran out of time while verifying.');
 	}, 1000 * 60 * VERIFICATION_TIMEOUTS_MINS);
 
@@ -73,5 +73,5 @@ async function startVerifyProcess(msg: Message, username: string) {
 		code: code,
 		timer: timer
 	};
-	client.default.settings.usersVerifying[msg.author.id] = user;
+	client.settings.usersVerifying[msg.author.id] = user;
 }

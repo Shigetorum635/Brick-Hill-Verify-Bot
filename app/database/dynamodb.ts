@@ -10,7 +10,7 @@ AWS.config.update({
 
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
-const fetchUser: IDynamoInteraction = async (discordId): Promise<any> => {
+const fetchUser: IDynamoInteraction = async (discordId) => {
 	const params: IParams = {
 		TableName: 'verified',
 		Key: {
@@ -44,4 +44,4 @@ const deleteVerifiedUser: IDynamoInteraction = async (discordId) => {
 	return documentClient.delete(params).promise();
 };
 
-export { fetchUser, setUserVerified, deleteVerifiedUser };
+export default { fetchUser, setUserVerified, deleteVerifiedUser };

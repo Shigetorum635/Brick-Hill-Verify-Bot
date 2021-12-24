@@ -33,10 +33,16 @@ export interface ISetParams {
 	Item: Item;
 }
 
-interface IUser {
+export interface IUser {
 	username?: string;
 	description?: string;
 	userId: number;
 	code?: string;
 	timer?: any;
 }
+
+export type IRoleInteraction = (
+	memberId: any,
+	roleName?: string,
+	userId?: number
+) => Promise<any>;

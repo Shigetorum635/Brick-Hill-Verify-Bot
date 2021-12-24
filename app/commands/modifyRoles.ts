@@ -1,3 +1,4 @@
+import { IRoleInteraction } from '../../types';
 import client from '../index';
 import api from './../api/brickHill.js';
 const BRICK_HILL_ROLES = [
@@ -23,8 +24,7 @@ export async function remove(memberId) {
 
 	return guildMember.roles.remove(roles, 'Removed by Brick Hill Verifier.');
 }
-
-export async function hasRole(memberId, roleName: string) {
+const hasRole: IRoleInteraction = async (memberId, roleName: string) => {
 	const guild = client.bot.guilds.cache.get(process.env.DISCORD_GUILD);
 	const guildMember = await guild.members.fetch({
 		user: memberId,
@@ -34,13 +34,15 @@ export async function hasRole(memberId, roleName: string) {
 	if (!guildMember) return;
 
 	return guild.roles.cache.some((role) => role.name === roleName);
-}
-export async function add(memberId, userId: number) {
+};
+
+const add: IRoleInteraction = async (memberId, _, userId) => {
 	const guild = client.bot.guilds.cache.get(process.env.DISCORD_GUILD);
 	const guildMember = await guild.members.fetch({
 		user: memberId,
 		force: true
 	});
+
 	if (!guildMember) return;
 
 	let roles = [guild.roles.cache.find((role) => role.name === 'Verified')];
@@ -61,4 +63,4 @@ export async function add(memberId, userId: number) {
 		.catch((error) => console.error(error));
 
 	return guildMember.roles.add(roles, 'Added by Brick Hill Verifier.');
-}
+};
