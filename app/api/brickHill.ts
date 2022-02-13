@@ -3,7 +3,7 @@ import * as phin from 'phin';
 const USERNAME_API: string = 'https://api.brick-hill.com/v1/user/id?username=';
 const PROFILE_API: string = 'https://api.brick-hill/v1/user/profile?id=';
 // TODO; add types support.
-const getIdFromUsername = async (username: string): Promise<boolean[]> => {
+const getIdFromUsername = async (username: string): Promise<boolean[]> | Promise<any[]> => {
 	{
 		try {
 			const data = (
@@ -11,7 +11,6 @@ const getIdFromUsername = async (username: string): Promise<boolean[]> => {
 					url: USERNAME_API + username
 				})
 			).body;
-			// @ts-expect-error
 			return [data.id, data.error];
 		} catch (error) {
 			return [false, false];
