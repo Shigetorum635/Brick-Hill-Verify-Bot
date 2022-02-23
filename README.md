@@ -1,5 +1,7 @@
-# Brick-Hill-Verify-Bot
+# Brick-Hill Discord Verification Bot
 
-Painful Typescript rewrite of the BH Verification bot.
+A TypeScript rewrite of  Brick-Hill verification bot for Discord.
 
-Thanks Jake for some of the help
+### Mentions
+
+Thanks Jake for the help explaining some of the code within the original bot.
